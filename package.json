@@ -10,6 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "postkit-date-status-display": "^1.0.0",
+    "postkit-excerpt": "^1.0.0",
+    "postkit-filter-sort": "^1.0.0",
+    "postkit-reading-time": "^1.0.0",
+    "postkit-search-library": "^1.0.12",
+    "postkit-slug": "^1.0.0",
+    "postkit-tag": "^1.0.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
