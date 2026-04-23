@@ -16,6 +16,7 @@
     "postkit-reading-time": "^1.0.0",
     "postkit-search-library": "^1.0.12",
     "postkit-slug": "^1.0.0",
+    "postkit-storage-lib": "^1.0.0",
     "postkit-tag": "^1.0.0",
     "postkit-validation-library": "^1.0.2",
     "react": "^19.2.4",
