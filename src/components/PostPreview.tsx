@@ -8,16 +8,17 @@ interface PostPreviewProps {
 }
 
 export default function PostPreview({ post }: PostPreviewProps) {
-
+  const { title, body, author, tags, createdAt, status } = post
+  
   return(
     <article>
-      <h2>{ post.title }</h2>
-      <p>{ createExcerpt(post.body, 150) }</p>
-      <p>by { post.author }</p>
-      {post.tags.map((tag) => <span key={tag}>{tag}</span>)}
-      <p> Reading Time: { formatTime(readingTime(post.body)) }</p>
-      <p> Posted on: { formatDate(post.createdAt) }</p>
-      <p style={{ color: statusToColor(post.status) ?? undefined }}>{ statusToLabel(post.status) }</p>
+      <h2>{ title }</h2>
+      <p>{ createExcerpt(body, 150) }</p>
+      <p>by { author }</p>
+      { tags.map((tag) => <span key={tag}>{tag} </span>) }
+      <p> Reading Time: { formatTime(readingTime(body)) }</p>
+      <p> Posted on: { formatDate(createdAt) }</p>
+      <p style={{ color: statusToColor(status) ?? undefined }}>{ statusToLabel(status) }</p>
     </article>
   )
 }
