@@ -1,9 +1,10 @@
-import './App.css'
+
 import SearchBar from './components/SearchBar'
 import PostList from './components/PostList'
 import { useEffect } from 'react'
 import { useStore } from './lib/store'
 import { fixtures } from './lib/fixtures'
+import { Routes, Route, Link } from 'react-router-dom'
 
 function App() {
   const posts = useStore((state) => state.posts)
@@ -16,11 +17,17 @@ function App() {
   }, []) 
 
   return (
-    <div>
-      <h1>Postkit</h1>
-      <SearchBar />
-      <PostList />
-    </div>
+    <Routes>
+      <Route path="/" element={
+        <div>
+          <Link to="/posts/new">New Post</Link>
+          <SearchBar />
+          <PostList />          
+        </div>
+      }/>
+      <Route path="/posts/new" element={<div>Coming Soon</div>}/>
+      <Route path="/posts/:id" element={<div>Coming Soon</div>}/>
+    </Routes>
   )
 }
 

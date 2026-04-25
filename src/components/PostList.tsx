@@ -2,6 +2,7 @@ import { searchPosts } from 'postkit-search-library'
 import { filterByStatus, filterByTag, sortByDate, sortByTitle } from 'postkit-filter-sort'
 import { useStore } from '../lib/store'
 import PostPreview from './PostPreview'
+import { Link } from 'react-router-dom'
 
 export default function PostList() {
   const posts = useStore((state) => state.posts)
@@ -53,7 +54,9 @@ export default function PostList() {
         </select>
       </section>
       {result.map((post) => (
-        <PostPreview key={post.id} post={post} />
+        <Link key={post.id} to={`/posts/${post.id}`}>
+          <PostPreview key={post.id} post={post} />
+        </Link>
       ))}
     </div>
   )
