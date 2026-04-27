@@ -20,6 +20,8 @@ export default function PostEditor({ existing }: PostEditorProps) {
   const [ category, setCategory ] = useState(existing?.category ?? '')
   const [ status, setStatus ] = useState<PostStatus>(existing?.status ?? 'draft')
   const [ tagInput, setTagInput ] = useState(existing?.tags.join(', ') ?? '')
+  const posts = useStore((state) => state.posts)
+  const existingSlugs = posts.map((p) => p.slug)
   const addPost = useStore((state) => state.addPost)
   const storeUpdatePost = useStore((state) => state.updatePost)
   const deletePost = useStore((state) => state.deletePost)
@@ -28,7 +30,7 @@ export default function PostEditor({ existing }: PostEditorProps) {
   const tags = removeDuplicateTags(parseTags(tagInput).map(normalizeTag))
   const currentPost = existing
     ? updatePost(existing, { title, body, author, category, status, tags })
-    : createPost(title, body, author, tags, category)
+    : createPost(title, body, author, tags, category, existingSlugs)
   const errors = getPostValidationErrors(currentPost)
 
   function handleSave() {

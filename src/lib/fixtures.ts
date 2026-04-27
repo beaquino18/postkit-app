@@ -3,6 +3,7 @@ import type { Post } from '../types'
 export const fixtures: Post[] = [
   {
     id: '1',
+    slug: 'waking-up-alone-great-start',
     title: 'Waking Up Alone (Great Start)',
     body: 'Okay so. I woke up and I do not know who I am. Classic. The ship is fine though — very reassuring that the ship is fine. My two crewmates are dead which is less fine. No memory, no name, no idea what I am doing twelve light years from Earth. On the bright side, the food dispenser works. I had something that was probably oatmeal. I gave myself a name: Ryland Grace. It was on my jumpsuit. Very helpful, past me.',
     author: 'Ryland Grace',
@@ -14,6 +15,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '2',
+    slug: 'the-petrova-line',
     title: 'The Petrova Line',
     body: 'Scientists first noticed an infrared anomaly forming between the Sun and Venus. We called it the Petrova Line. At first it looked like an instrument error. Then three more observatories confirmed it. Something was out there, feeding. The Sun was dimming at a rate that would cause catastrophic global cooling within thirty years. This was not a hypothesis anymore. This was a countdown.',
     author: 'Eva Stratt',
@@ -25,6 +27,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '3',
+    slug: 'what-is-astrophage',
     title: 'What Is Astrophage?',
     body: 'Astrophage is a single-celled organism that metabolizes light and heat from stars. It reproduces on the surface of the Sun, then migrates to Venus to breed. It is extraordinarily efficient, storing energy in a way that violates everything we thought we knew about thermodynamics. It is also, somehow, alive. We are dealing with the first known extraterrestrial life form, and it is eating our star.',
     author: 'Ryland Grace',
@@ -36,6 +39,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '4',
+    slug: 'the-hail-mary-mission',
     title: 'The Hail Mary Mission',
     body: 'Every nation on Earth agreed for once. We had to send someone to Tau Ceti, twelve light years away, to find out why that star was unaffected by Astrophage. The mission was a one-way trip. The crew would not return. Three people were selected, put into induced comas, and launched aboard the Hail Mary with humanity riding on their shoulders. A desperate last throw.',
     author: 'Eva Stratt',
@@ -47,6 +51,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '5',
+    slug: 'first-contact-with-rocky',
     title: 'First Contact with Rocky',
     body: 'There is another ship here. It appeared on my radar without warning, matching my orbit around Tau Ceti. I nearly had a heart attack. Then it started communicating — not with radio waves, but with sound transmitted through a physical connection between our hulls. Whatever is on that ship is intelligent, methodical, and as desperate as I am. I have decided to call it Rocky.',
     author: 'Ryland Grace',
@@ -58,6 +63,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '6',
+    slug: 'learning-to-talk-to-an-alien',
     title: 'Learning to Talk to an Alien',
     body: 'Rocky communicates through musical tones. Five holes, like a flute, but built into its carapace. We spent days establishing shared concepts — numbers first, then physical quantities, then abstract ideas. It is the most intellectually stimulating thing I have ever done in my life. We are two scientists from different stars, building a language from nothing, because the alternative is dying alone.',
     author: 'Ryland Grace',
@@ -69,6 +75,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '7',
+    slug: 'rockys-home-planet-erid',
     title: 'Rocky\'s Home Planet: Erid',
     body: 'Rocky comes from a planet called Erid, a high-gravity world with a dense ammonia atmosphere. Eridians evolved in near-total darkness, which explains the lack of eyes and the reliance on echolocation and touch. What Rocky calls sight is actually a sophisticated sonar system. The planet is also being devastated by Astrophage. Two civilisations, one crisis, and we found each other by chance.',
     author: 'Ryland Grace',
@@ -80,6 +87,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '8',
+    slug: 'tau-ceti-has-no-astrophage',
     title: 'Tau Ceti Has No Astrophage',
     body: 'The reason Tau Ceti is unaffected is a natural organism in its system that consumes Astrophage. We are calling it Taumoeba. It is the answer. If we can get a sample back to Earth and cultivate it, we can inoculate the Sun. The problem is that Taumoeba cannot survive in our solar system without significant modification. Rocky and I have work to do.',
     author: 'Ryland Grace',
@@ -91,6 +99,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '9',
+    slug: 'my-alien-best-friend-is-a-better-engineer-than-me',
     title: 'My Alien Best Friend Is a Better Engineer Than Me',
     body: 'Rocky built a functional airlock connecting our two ships in about four hours. Four hours. I asked how long it would have taken me to do the same thing and Rocky made a sound I can only describe as polite alien laughter. Rocky has four arms, echolocation, and apparently infinite patience for my inferior human engineering. I am choosing to see this as a learning opportunity and not a humiliation. It is mostly a humiliation.',
     author: 'Ryland Grace',
@@ -102,6 +111,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '10',
+    slug: 'the-stratt-protocols',
     title: 'The Stratt Protocols',
     body: 'Eva Stratt had unprecedented authority to conscript anyone, seize any resource, override any government. She used it without hesitation. Scientists were pulled from their families. Factories were retooled overnight. Anyone who slowed the mission was removed. History will judge whether she was a hero or a tyrant. I think she was both, and I think that was exactly what the situation required.',
     author: 'Ryland Grace',
@@ -113,6 +123,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '11',
+    slug: 'things-i-miss-about-earth-a-list',
     title: 'Things I Miss About Earth (A List)',
     body: 'In no particular order: coffee, gravity that does not try to kill you, being able to breathe outside, my students complaining about homework, knowing what country I am in, cheese, the concept of weekends, traffic (okay maybe not traffic), not knowing what Astrophage is, and the absolute luxury of having problems that do not involve the extinction of all life on Earth. Rocky asked what "cheese" is. I tried to explain dairy. Rocky was horrified.',
     author: 'Ryland Grace',
@@ -124,6 +135,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '12',
+    slug: 'cultivating-taumoeba',
     title: 'Cultivating Taumoeba',
     body: 'Getting Taumoeba to survive outside of the Tau Ceti system required understanding its metabolism at a cellular level. Rocky provided the engineering solutions while I worked the biology. We failed forty-one times before the forty-second attempt produced a stable strain. Forty-one failures. Each one felt like the last chance. The forty-second felt like a miracle.',
     author: 'Ryland Grace',
@@ -135,6 +147,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '13',
+    slug: 'we-failed-41-times-and-i-am-fine',
     title: 'We Failed 41 Times and I Am Fine',
     body: 'Attempt 1: Taumoeba died immediately. Attempt 7: Taumoeba died but slightly slower. Attempt 19: Rocky and I had our first real argument about methodology. Attempt 23: I cried a little. Attempt 35: Rocky made a sound I think was encouragement but might have been sneezing, hard to tell. Attempt 41: Died again. Attempt 42: It worked. It just worked. I screamed. Rocky made many sounds. We have a viable Taumoeba strain and I need to lie down.',
     author: 'Ryland Grace',
@@ -146,6 +159,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '14',
+    slug: 'what-we-owe-the-stars',
     title: 'What We Owe the Stars',
     body: 'I have been thinking about what it means to meet another civilisation and find that you are both facing the same extinction. There is something almost comforting in it — proof that intelligence is not unique to Earth, that the universe produces minds that care, that work, that refuse to give up. Whatever happens next, Rocky and I proved that two species can choose cooperation over fear. That seems important.',
     author: 'Ryland Grace',
@@ -157,6 +171,7 @@ export const fixtures: Post[] = [
   },
   {
     id: '15',
+    slug: 'a-new-home-on-erid',
     title: 'A New Home on Erid',
     body: 'Rocky came back. Against all odds, against physics and time and distance, Rocky returned to Tau Ceti with an Eridian rescue ship. I am going to Erid. I will be the first human to live on another world, breathing recycled air in a habitat built by four-armed engineers who call me friend. Earth will be fine. The Taumoeba is working. And I have somewhere to be.',
     author: 'Ryland Grace',

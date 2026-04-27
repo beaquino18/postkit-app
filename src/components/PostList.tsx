@@ -3,6 +3,7 @@ import { filterByStatus, filterByTag, sortByDate, sortByTitle } from 'postkit-fi
 import { useStore } from '../lib/store'
 import PostPreview from './PostPreview'
 import { Link } from 'react-router-dom'
+import type { Post } from "../types"
 
 export default function PostList() {
   const posts = useStore((state) => state.posts)
@@ -19,11 +20,11 @@ export default function PostList() {
   const allTags = posts.flatMap((x) => x.tags)
   const noDuplicates = [... new Set(allTags)]
 
-  let result = searchPosts(posts, search)
-  if (statusFilter) result = filterByStatus(result, statusFilter)
-  if (tagFilter) result = filterByTag(result, tagFilter)
-  if (sortKey === 'date') result = sortByDate(result, sortOrder)
-  if (sortKey === 'title') result = sortByTitle(result, sortOrder)
+  let result = searchPosts(posts, search) as Post[]
+  if (statusFilter) result = filterByStatus(result, statusFilter) as Post[]
+  if (tagFilter) result = filterByTag(result, tagFilter) as Post[]
+  if (sortKey === 'date') result = sortByDate(result, sortOrder) as Post[]
+  if (sortKey === 'title') result = sortByTitle(result, sortOrder) as Post[]
 
   return(
     <div>
@@ -54,8 +55,8 @@ export default function PostList() {
         </select>
       </section>
       {result.map((post) => (
-        <Link key={post.id} to={`/posts/${post.id}`}>
-          <PostPreview key={post.id} post={post} />
+        <Link key={post.id} to={`/posts/${post.slug}`}>
+          <PostPreview post={post} />
         </Link>
       ))}
     </div>

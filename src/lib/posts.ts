@@ -1,14 +1,16 @@
 import type { Post } from '../types'
+import { createSlugFromTitle, makeUniqueSlug } from 'postkit-slug'
 
 export function generateId(): string {
   return crypto.randomUUID()
 }
 
-export function createPost(title: string, body: string, author: string, tags: string[], category: string): Post {
+export function createPost(title: string, body: string, author: string, tags: string[], category: string, existingSlugs: string[] = []): Post {
   const id = generateId()
   const status = "draft"
   const createdAt = new Date().toISOString()
   const updatedAt = new Date().toISOString()
+  const slug = makeUniqueSlug(createSlugFromTitle(title), existingSlugs)
 
   return {
     id,
@@ -18,6 +20,7 @@ export function createPost(title: string, body: string, author: string, tags: st
     tags,
     category,
     status,
+    slug,
     createdAt,
     updatedAt
   }

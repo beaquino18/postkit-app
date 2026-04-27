@@ -8,9 +8,9 @@ import { Routes, Route, Link, useParams } from 'react-router-dom'
 import PostEditor from './components/PostEditor'
 
 function EditPostRoute() {
-  const { id } = useParams<{ id: string }>()
+  const { slug } = useParams<{ slug: string }>()
   const posts = useStore((state) => state.posts)
-  const post = posts.find((p) => p.id === id)
+  const post = posts.find((p) => p.slug === slug)
   return <PostEditor existing={post} />
 }
 
