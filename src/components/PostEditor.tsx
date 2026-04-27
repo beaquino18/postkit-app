@@ -1,11 +1,13 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { getPostValidationErrors, isPostValid } from "postkit-validation-library"
 import { parseTags, normalizeTag, removeDuplicateTags } from "postkit-tag"
 import type { Post, PostStatus } from "../types"
 import { useState } from "react"
+import { createPost, updatePost } from "../lib/posts"
+import { useStore } from "../lib/store"
 
 interface PostEditorProps {
-  onSave: (post: Post) => void
+  onSave?: (post: Post) => void
   onDelete?: (id: string) => void
   existing?: Post
 
@@ -18,11 +20,40 @@ export default function PostEditor({ existing }: PostEditorProps) {
   const [ category, setCategory ] = useState(existing?.category ?? '')
   const [ status, setStatus ] = useState<PostStatus>(existing?.status ?? 'draft')
   const [ tagInput, setTagInput ] = useState(existing?.tags.join(', ') ?? '')
+  const addPost = useStore((state) => state.addPost)
+  const storeUpdatePost = useStore((state) => state.updatePost)
+  const deletePost = useStore((state) => state.deletePost)
   const navigate = useNavigate()
-  
+
+  const tags = removeDuplicateTags(parseTags(tagInput).map(normalizeTag))
+  const currentPost = existing
+    ? updatePost(existing, { title, body, author, category, status, tags })
+    : createPost(title, body, author, tags, category)
+  const errors = getPostValidationErrors(currentPost)
+
+  function handleSave() {
+    if (!isPostValid(currentPost)) return
+
+    if (existing) {
+      storeUpdatePost(currentPost)
+    } else {
+      addPost(currentPost)
+    }
+
+    navigate('/')
+  }
+
+  function handleDelete() {
+    if (!existing) return
+    if (window.confirm('Are you sure you want to delete this post?')) {
+      deletePost(existing.id)
+      navigate('/')
+    }
+  }
 
   return(
     <article>
+      <Link to="/">← Back</Link>
       <label>
         Title
         <input value={title} onChange={(e) => setTitle(e.target.value)}></input>
@@ -51,6 +82,17 @@ export default function PostEditor({ existing }: PostEditorProps) {
         Tags
         <input value={tagInput} onChange={(e) => setTagInput(e.target.value)}></input>
       </label>
+      <section>
+        <button onClick={handleSave}>Save</button>
+        { existing && (
+          <button onClick={handleDelete}>Delete</button>
+        )}
+      </section>
+      <section className="errors">
+        {errors.map((error) => (
+          <p key={error.field}>{error.message}</p>
+        ))}
+      </section>
     </article>
   )
 }

@@ -4,7 +4,15 @@ import PostList from './components/PostList'
 import { useEffect } from 'react'
 import { useStore } from './lib/store'
 import { fixtures } from './lib/fixtures'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useParams } from 'react-router-dom'
+import PostEditor from './components/PostEditor'
+
+function EditPostRoute() {
+  const { id } = useParams<{ id: string }>()
+  const posts = useStore((state) => state.posts)
+  const post = posts.find((p) => p.id === id)
+  return <PostEditor existing={post} />
+}
 
 function App() {
   const posts = useStore((state) => state.posts)
@@ -25,8 +33,8 @@ function App() {
           <PostList />          
         </div>
       }/>
-      <Route path="/posts/new" element={<div>Coming Soon</div>}/>
-      <Route path="/posts/:id" element={<div>Coming Soon</div>}/>
+      <Route path="/posts/new" element={<PostEditor />}/>
+      <Route path="/posts/:id" element={<EditPostRoute />}/>
     </Routes>
   )
 }
