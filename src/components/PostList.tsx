@@ -12,6 +12,8 @@ const STATUS_FILTERS = [
   { label: 'Published', value: 'published' },
 ] as const
 
+const selectClass = "px-3 py-1 text-sm bg-[#0a1628] border border-[#162035] rounded-lg text-[#8b9bb8] focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+
 export default function PostList() {
   const posts = useStore((state) => state.posts)
   const search = useStore((state) => state.search)
@@ -43,8 +45,8 @@ export default function PostList() {
               onClick={() => setStatusFilter(value)}
               className={`px-3 py-1 text-sm rounded-full transition-colors cursor-pointer ${
                 statusFilter === value
-                  ? 'bg-violet-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-cyan-600 text-white'
+                  : 'bg-[#0a1628] text-[#8b9bb8] border border-[#162035] hover:border-cyan-500/40 hover:text-cyan-400'
               }`}
             >
               {label}
@@ -55,7 +57,7 @@ export default function PostList() {
         <section className="flex gap-2 ml-auto">
           <select
             onChange={(e) => setTagFilter(e.target.value || null)}
-            className="px-3 py-1 text-sm border border-gray-200 rounded-lg text-gray-600 focus:outline-none focus:ring-2 focus:ring-violet-500"
+            className={selectClass}
           >
             <option value="">All tags</option>
             {noDuplicates.map((tag) => (
@@ -66,7 +68,7 @@ export default function PostList() {
           <select
             value={sortKey}
             onChange={(e) => setSortKey(e.target.value as 'date' | 'title')}
-            className="px-3 py-1 text-sm border border-gray-200 rounded-lg text-gray-600 focus:outline-none focus:ring-2 focus:ring-violet-500"
+            className={selectClass}
           >
             <option value="date">Date</option>
             <option value="title">Title</option>
@@ -75,7 +77,7 @@ export default function PostList() {
           <select
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value as 'desc' | 'asc')}
-            className="px-3 py-1 text-sm border border-gray-200 rounded-lg text-gray-600 focus:outline-none focus:ring-2 focus:ring-violet-500"
+            className={selectClass}
           >
             <option value="desc">Descending</option>
             <option value="asc">Ascending</option>

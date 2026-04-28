@@ -29,10 +29,10 @@ function App() {
       <Route path="/" element={
         <div className="max-w-3xl mx-auto px-6 py-10">
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-3xl font-semibold text-gray-900">Posts</h1>
+            <h1 className="text-3xl font-semibold text-[#d4e0f5]">Posts</h1>
             <Link
               to="/posts/new"
-              className="bg-violet-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-violet-700 transition-colors"
+              className="bg-cyan-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-cyan-500 transition-colors"
             >
               New Post
             </Link>
