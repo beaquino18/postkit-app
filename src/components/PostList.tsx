@@ -5,6 +5,13 @@ import PostPreview from './PostPreview'
 import { Link } from 'react-router-dom'
 import type { Post } from "../types"
 
+const STATUS_FILTERS = [
+  { label: 'All', value: null },
+  { label: 'Draft', value: 'draft' },
+  { label: 'Review', value: 'review' },
+  { label: 'Published', value: 'published' },
+] as const
+
 export default function PostList() {
   const posts = useStore((state) => state.posts)
   const search = useStore((state) => state.search)
@@ -28,37 +35,61 @@ export default function PostList() {
 
   return(
     <div>
-      <section className="status-filter">
-        <button onClick={() => setStatusFilter(null)}>All</button>
-        <button onClick={() => setStatusFilter('draft')}>Draft</button>
-        <button onClick={() => setStatusFilter('review')}>Review</button>
-        <button onClick={() => setStatusFilter('published')}>Published</button>
-      </section>
-
-      <section className="tag-filter">
-        <select onChange={(e) => setTagFilter(e.target.value || null)}>
-          <option value="">All tags</option>
-          {noDuplicates.map((tag) => (
-            <option key={tag} value={tag}>{tag}</option>
+      <div className="flex flex-wrap items-center gap-3 mb-4">
+        <section className="flex gap-1">
+          {STATUS_FILTERS.map(({ label, value }) => (
+            <button
+              key={label}
+              onClick={() => setStatusFilter(value)}
+              className={`px-3 py-1 text-sm rounded-full transition-colors cursor-pointer ${
+                statusFilter === value
+                  ? 'bg-violet-600 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              {label}
+            </button>
           ))}
-        </select>
-      </section>
+        </section>
 
-      <section className="sort">
-        <select value={sortKey} onChange={(e) => setSortKey(e.target.value as 'date' | 'title')}>
-          <option value="date">Date</option>
-          <option value="title">Title</option>
-        </select>
-        <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value as 'desc' | 'asc')}>
-          <option value="desc">Descending</option>
-          <option value="asc">Ascending</option>
-        </select>
-      </section>
-      {result.map((post) => (
-        <Link key={post.id} to={`/posts/${post.slug}`}>
-          <PostPreview post={post} />
-        </Link>
-      ))}
+        <section className="flex gap-2 ml-auto">
+          <select
+            onChange={(e) => setTagFilter(e.target.value || null)}
+            className="px-3 py-1 text-sm border border-gray-200 rounded-lg text-gray-600 focus:outline-none focus:ring-2 focus:ring-violet-500"
+          >
+            <option value="">All tags</option>
+            {noDuplicates.map((tag) => (
+              <option key={tag} value={tag}>{tag}</option>
+            ))}
+          </select>
+
+          <select
+            value={sortKey}
+            onChange={(e) => setSortKey(e.target.value as 'date' | 'title')}
+            className="px-3 py-1 text-sm border border-gray-200 rounded-lg text-gray-600 focus:outline-none focus:ring-2 focus:ring-violet-500"
+          >
+            <option value="date">Date</option>
+            <option value="title">Title</option>
+          </select>
+
+          <select
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value as 'desc' | 'asc')}
+            className="px-3 py-1 text-sm border border-gray-200 rounded-lg text-gray-600 focus:outline-none focus:ring-2 focus:ring-violet-500"
+          >
+            <option value="desc">Descending</option>
+            <option value="asc">Ascending</option>
+          </select>
+        </section>
+      </div>
+
+      <div className="flex flex-col gap-3">
+        {result.map((post) => (
+          <Link key={post.id} to={`/posts/${post.slug}`} className="no-underline">
+            <PostPreview post={post} />
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }

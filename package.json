@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.2.4",
     "postkit-date-status-display": "^1.0.0",
     "postkit-excerpt": "^1.0.0",
     "postkit-filter-sort": "^1.0.0",
@@ -22,6 +23,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.14.2",
+    "tailwindcss": "^4.2.4",
     "zustand": "^5.0.12"
   },
   "devDependencies": {
