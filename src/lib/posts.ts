@@ -10,7 +10,7 @@ export function createPost(title: string, body: string, author: string, tags: st
   const status = "draft"
   const createdAt = new Date().toISOString()
   const updatedAt = new Date().toISOString()
-  const slug = makeUniqueSlug(createSlugFromTitle(title), existingSlugs)
+  const slug = title.trim() ? makeUniqueSlug(createSlugFromTitle(title), existingSlugs) : ''
 
   return {
     id,
