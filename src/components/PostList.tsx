@@ -12,7 +12,7 @@ const STATUS_FILTERS = [
   { label: 'Published', value: 'published' },
 ] as const
 
-const selectClass = "px-3 py-1 text-sm bg-[#0a1628] border border-[#162035] rounded-lg text-[#8b9bb8] focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+const selectClass = "px-3 py-1 text-sm bg-[#fffdf5] border border-[#e0d0a0] rounded-lg text-[#6a5a38] focus:outline-none focus:ring-2 focus:ring-[#e8971a]/40"
 
 export default function PostList() {
   const posts = useStore((state) => state.posts)
@@ -45,8 +45,8 @@ export default function PostList() {
               onClick={() => setStatusFilter(value)}
               className={`px-3 py-1 text-sm rounded-full transition-colors cursor-pointer ${
                 statusFilter === value
-                  ? 'bg-cyan-600 text-white'
-                  : 'bg-[#0a1628] text-[#8b9bb8] border border-[#162035] hover:border-cyan-500/40 hover:text-cyan-400'
+                  ? 'bg-[#e8971a] text-[#1a1408]'
+                  : 'bg-[#fffdf5] text-[#6a5a38] border border-[#e0d0a0] hover:border-[#e8971a]/60 hover:text-[#e8971a]'
               }`}
             >
               {label}

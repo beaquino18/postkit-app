@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
 :root {
-  --text: #8b9bb8;
-  --text-h: #d4e0f5;
-  --bg: #050810;
-  --border: #162035;
-  --code-bg: #0a1628;
-  --accent: #00c8d4;
-  --accent-bg: rgba(0, 200, 212, 0.08);
-  --accent-border: rgba(0, 200, 212, 0.35);
-  --shadow: rgba(0, 200, 212, 0.08) 0 10px 15px -3px, rgba(0, 0, 0, 0.5) 0 4px 6px -2px;
+  --text: #6a5a38;
+  --text-h: #1a1408;
+  --bg: #fdf8ec;
+  --border: #e0d0a0;
+  --code-bg: #fffdf5;
+  --accent: #e8971a;
+  --accent-bg: rgba(232, 151, 26, 0.10);
+  --accent-border: rgba(232, 151, 26, 0.40);
+  --shadow: rgba(232, 151, 26, 0.12) 0 10px 15px -3px, rgba(0, 0, 0, 0.08) 0 4px 6px -2px;
 
   --sans: 'Space Grotesk', system-ui, sans-serif;
   --heading: 'Space Grotesk', system-ui, sans-serif;
@@ -18,7 +18,7 @@
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: dark;
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;

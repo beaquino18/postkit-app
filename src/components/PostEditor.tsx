@@ -12,8 +12,8 @@ interface PostEditorProps {
   existing?: Post
 }
 
-const inputClass = "w-full px-3 py-2 bg-[#0a1628] border border-[#162035] rounded-lg text-sm text-[#d4e0f5] focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50"
-const labelClass = "flex flex-col gap-1 text-sm font-medium text-[#8b9bb8]"
+const inputClass = "w-full px-3 py-2 bg-[#fffdf5] border border-[#e0d0a0] rounded-lg text-sm text-[#1a1408] focus:outline-none focus:ring-2 focus:ring-[#e8971a]/40 focus:border-[#e8971a]/60"
+const labelClass = "flex flex-col gap-1 text-sm font-medium text-[#6a5a38]"
 
 export default function PostEditor({ existing }: PostEditorProps) {
   const [ title, setTitle ] = useState(existing?.title ?? '')
@@ -55,11 +55,11 @@ export default function PostEditor({ existing }: PostEditorProps) {
 
   return(
     <div className="max-w-2xl mx-auto px-6 py-10">
-      <Link to="/" className="text-sm text-cyan-400 hover:text-cyan-300 mb-6 inline-block transition-colors">
+      <Link to="/" className="text-sm text-[#e8971a] hover:text-[#f5b942] mb-6 inline-block transition-colors">
         ← Back
       </Link>
 
-      <h1 className="text-2xl font-semibold text-[#d4e0f5] mb-6">
+      <h1 className="text-2xl font-semibold text-[#1a1408] mb-6">
         {existing ? 'Edit Post' : 'New Post'}
       </h1>
 
@@ -99,12 +99,12 @@ export default function PostEditor({ existing }: PostEditorProps) {
         </label>
 
         <label className={labelClass}>
-          Tags <span className="font-normal text-[#3d5070]">(comma-separated)</span>
+          Tags <span className="font-normal text-[#8a7a50]">(comma-separated)</span>
           <input value={tagInput} onChange={(e) => setTagInput(e.target.value)} className={inputClass} />
         </label>
 
         {errors.length > 0 && (
-          <ul className="text-sm text-red-400 flex flex-col gap-1">
+          <ul className="text-sm text-red-600 flex flex-col gap-1">
             {errors.map((error) => (
               <li key={error.field}>{error.message}</li>
             ))}
@@ -114,14 +114,14 @@ export default function PostEditor({ existing }: PostEditorProps) {
         <div className="flex gap-2 pt-2">
           <button
             onClick={handleSave}
-            className="bg-cyan-600 text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-cyan-500 transition-colors cursor-pointer"
+            className="bg-[#e8971a] text-[#1a1408] text-sm font-medium px-5 py-2 rounded-lg hover:bg-[#f5b942] transition-colors cursor-pointer"
           >
             Save
           </button>
           {existing && (
             <button
               onClick={handleDelete}
-              className="bg-transparent text-red-400 text-sm font-medium px-5 py-2 rounded-lg border border-red-900 hover:bg-red-950 transition-colors cursor-pointer"
+              className="bg-transparent text-red-600 text-sm font-medium px-5 py-2 rounded-lg border border-red-200 hover:bg-red-50 transition-colors cursor-pointer"
             >
               Delete
             </button>

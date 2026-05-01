@@ -10,7 +10,7 @@ export default function SearchBar() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search posts..."
-        className="w-full px-4 py-2 bg-[#0a1628] border border-[#162035] rounded-lg text-sm text-[#d4e0f5] placeholder-[#3d5070] focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50"
+        className="w-full px-4 py-2 bg-[#fffdf5] border border-[#e0d0a0] rounded-lg text-sm text-[#1a1408] placeholder-[#b0a080] focus:outline-none focus:ring-2 focus:ring-[#e8971a]/40 focus:border-[#e8971a]/60"
       />
     </div>
   )
