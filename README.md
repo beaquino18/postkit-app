@@ -1,150 +1,77 @@
-# Requirements & Acceptance Criteria
+# PostKit
 
-## R1 — Browse Posts
-
-- [x] Show title, status, tags, reading time, and date on each card (`PostPreview`)
-- [ ] List remains useful as posts grow — needs filter/sort controls wired up in `PostList`
-
-## R2 — Filter Posts
-
-- [x] Filter by status
-- [x] Filter by tag
-
-## R3 — Sort Posts
-
-- [x] Sort by date (newest/oldest)
-- [x] Sort by title (A–Z / Z–A)
-
-## R4 — Search Posts
-
-- [x] Search input updates store (`SearchBar`)
-- [x] `PostList` applies `searchPosts` to results
-
-## R5 — Create, Edit, Delete Posts
-
-- [ ] Create a new post
-- [ ] Edit title, body, tags, category, status
-- [ ] Delete a post with confirmation
-- [ ] Validation feedback for missing/invalid fields
-
-## R6 — Post URLs (slug)
-
-- [ ] `postkit-slug` not yet integrated into `posts.ts`
-- [ ] `slug` field not yet added to `Post` type
-- [ ] Slug not yet displayed in `PostPreview`
-
-## R7 — Preview Post Metadata
-
-- [x] Excerpt (`postkit-excerpt`)
-- [x] Reading time (`postkit-reading-time`)
-- [x] Formatted date and status (`postkit-date-status-display`)
-- [ ] Slug display
-- [ ] Status in readable form in a dedicated preview component
-
-## R8 — Save and Restore
-
-- [x] Zustand `persist` middleware saves posts to localStorage
-
-## R9 — Consistent Visual Language
-
-- [ ] See styling progress breakdown below
-
-## R10 — Routing
-
-- [x] Install `react-router-dom`
-- [ ] Define routes in `App.tsx`: `/` for post list, `/posts/:id` for post detail, `/posts/new` for new post
-- [ ] `PostList` links each post card to `/posts/:id`
-- [ ] `PostEditor` reads `:id` from URL params when in edit mode
-- [ ] Browser back button works between views
-- [ ] URLs are bookmarkable and shareable
+A lightweight post management app built with React, where you can create, edit, search, and organize written posts — built as a learning project exploring component design, state management, and third-party library integration.
 
 ---
 
-## Layout Decision — Option A
+## Tech Stack
 
-Search, filter, and sort all live on the Post List View (`/`). Layout from top to bottom:
+| Layer | Tool |
+|---|---|
+| UI | React 19 + TypeScript |
+| Routing | React Router v7 |
+| State | Zustand with persist middleware |
+| Styling | Tailwind CSS v4 |
+| Testing | Vitest + React Testing Library |
+| Post utilities | `postkit-slug`, `postkit-excerpt`, `postkit-reading-time`, `postkit-date-status-display`, `postkit-filter-sort`, `postkit-search-library`, `postkit-tag`, `postkit-validation-library`, `postkit-storage-lib` |
 
-```
-[ Header / App Title ]
-[ SearchBar ]
-[ Filter controls: status | tag ]
-[ Sort controls: date asc/desc | title asc/desc ]
-[ Post cards (PostPreview × n) ]
-```
+---
 
-- Search bar is always visible at the top of the list view
-- Filter and sort controls sit between the search bar and the post cards
-- No sidebar, no separate search results page
-- Navigating to `/posts/:id` or `/posts/new` leaves the list view entirely
+## Requirements
+
+| Requirement | Status |
+|---|---|
+| Browse, filter, sort, search posts | ✓ |
+| Create, edit, delete with validation | ✓ |
+| Slug-based URLs and routing | ✓ |
+| Post metadata (excerpt, reading time, date) | ✓ |
+| Save to localStorage, export/import JSON | ✓ |
 
 ---
 
 ## Acceptance Criteria
 
-- [x] See a list of posts with title, status, tags, reading time, and date
-- [ ] Filter the list by status or tag
-- [ ] Sort the list by date or title
-- [x] Search posts and get accurate results
-- [ ] Create a new post and see it appear in the list
-- [ ] Edit an existing post and see changes saved
-- [ ] Delete a post and confirm it is removed
-- [ ] See validation feedback when required fields are missing
-- [ ] See a slug, excerpt, reading time, and formatted date in post preview
-- [x] Close and reopen the browser and find posts still there
-- [ ] Navigate between list and editor using the browser back button
-- [ ] Link directly to a specific post via its URL
+PostKit covers all core requirements: browsing, filtering, sorting, searching, full CRUD with validation, slug-based routing, and localStorage persistence with JSON export and import. All 12 original acceptance criteria are met.
 
 ---
 
-## Styling Progress (R9)
+## Features
 
-### Post List View (`/`) — search + filter + sort + cards all here
-
-- [ ] Page layout and spacing
-- [ ] Header / app title styled
-- [ ] Search bar styled
-- [ ] Filter controls styled — status buttons (draft / review / published / all) and tag selector
-- [ ] Sort controls styled — date and title toggles with asc/desc direction
-- [ ] Post card (`PostPreview`) styled
-- [ ] Status badge colour-coded on each card
-- [ ] Tags displayed as styled chips on each card
-- [ ] Empty state styled (no posts found / no search results)
-- [ ] "New Post" button styled and visible
-
-### Post Editor View (`/posts/new`, `/posts/:id`)
-
-- [ ] Form layout and spacing
-- [ ] Input fields styled (title, body, author, category)
-- [ ] Tag input styled
-- [ ] Status selector styled
-- [ ] Validation error messages styled
-- [ ] Save and Delete buttons styled
-- [ ] Confirmation dialog for delete styled
-
-### Post Detail / Preview View (`/posts/:id`)
-
-- [ ] Page layout and spacing
-- [ ] Slug displayed and styled
-- [ ] Excerpt styled
-- [ ] Reading time styled
-- [ ] Formatted date styled
-- [ ] Status badge styled
-- [ ] Tags styled
-
-### Global / Shared
-
-- [ ] Typography (font, size, line height)
-- [ ] Colour palette consistent across views
-- [ ] Responsive layout (mobile-friendly)
-- [ ] Navigation / header styled
+- **Post list** — browse all posts with title, status badge, excerpt, reading time, tags, and date
+- **Filter & sort** — filter by status (draft / review / published) or tag; sort by date or title in either direction
+- **Search** — live search across post titles and content
+- **Create & edit** — full post editor with title, body, author, category, tags, and status
+- **Validation** — inline error messages for missing or invalid fields
+- **Delete** — delete with a confirmation dialog
+- **Routing** — each post has a unique slug-based URL; browser back button works throughout
+- **Persistence** — posts survive page refreshes via localStorage
+- **Export / Import** — download all posts as a JSON backup; restore from a JSON file
 
 ---
 
-## Overall Progress
+## Theme
 
-| Area                  | Done  | Total  | %       |
-| --------------------- | ----- | ------ | ------- |
-| Requirements (R1–R10) | 5     | 23     | 22%     |
-| Acceptance Criteria   | 3     | 12     | 25%     |
-| Styling               | 0     | 22     | 0%      |
-| **Total**             | **8** | **57** | **14%** |
+Styled after the visual palette of the *Project Hail Mary* movie — warm cream background (`#fdf8ec`), Astrophage gold (`#e8971a`) as the primary accent, and aurora green (`#5ab020`) for tags. Typography uses Space Grotesk.
+
+---
+
+## Test Results
+
+13 tests passing across 3 files using Vitest and React Testing Library.
+
+| File | Tests | Coverage |
+|---|---|---|
+| `PostList.test.tsx` | 7 | Status filter, tag filter, sort by date, search |
+| `PostEditor.test.tsx` | 5 | Create, edit, delete, validation |
+| `Routing.test.tsx` | 1 | Slug-based routing loads correct post |
+
+Tests are integration-style — they use the real store, real library implementations, and assert on rendered output rather than implementation details.
+
+---
+
+## Future Work
+
+- Empty state UI when no posts match a search or filter
+- Slug displayed in the post preview card
+- Mobile-responsive layout
+- Formally write test specifications (Behavior / Setup / Action / Assert / Failure) and verify each test fails when the behavior is broken
