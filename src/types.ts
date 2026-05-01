@@ -10,4 +10,5 @@ export type Post = {
   status: PostStatus
   createdAt: string
   updatedAt: string
+  slug: string
 }

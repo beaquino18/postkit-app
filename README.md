@@ -1,73 +1,77 @@
-# React + TypeScript + Vite
+# PostKit
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight post management app built with React, where you can create, edit, search, and organize written posts — built as a learning project exploring component design, state management, and third-party library integration.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
 
-## React Compiler
+| Layer | Tool |
+|---|---|
+| UI | React 19 + TypeScript |
+| Routing | React Router v7 |
+| State | Zustand with persist middleware |
+| Styling | Tailwind CSS v4 |
+| Testing | Vitest + React Testing Library |
+| Post utilities | `postkit-slug`, `postkit-excerpt`, `postkit-reading-time`, `postkit-date-status-display`, `postkit-filter-sort`, `postkit-search-library`, `postkit-tag`, `postkit-validation-library`, `postkit-storage-lib` |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Requirements
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Requirement | Status |
+|---|---|
+| Browse, filter, sort, search posts | ✓ |
+| Create, edit, delete with validation | ✓ |
+| Slug-based URLs and routing | ✓ |
+| Post metadata (excerpt, reading time, date) | ✓ |
+| Save to localStorage, export/import JSON | ✓ |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Acceptance Criteria
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+PostKit covers all core requirements: browsing, filtering, sorting, searching, full CRUD with validation, slug-based routing, and localStorage persistence with JSON export and import. All 12 original acceptance criteria are met.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Features
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Post list** — browse all posts with title, status badge, excerpt, reading time, tags, and date
+- **Filter & sort** — filter by status (draft / review / published) or tag; sort by date or title in either direction
+- **Search** — live search across post titles and content
+- **Create & edit** — full post editor with title, body, author, category, tags, and status
+- **Validation** — inline error messages for missing or invalid fields
+- **Delete** — delete with a confirmation dialog
+- **Routing** — each post has a unique slug-based URL; browser back button works throughout
+- **Persistence** — posts survive page refreshes via localStorage
+- **Export / Import** — download all posts as a JSON backup; restore from a JSON file
+
+---
+
+## Theme
+
+Styled after the visual palette of the *Project Hail Mary* movie — warm cream background (`#fdf8ec`), Astrophage gold (`#e8971a`) as the primary accent, and aurora green (`#5ab020`) for tags. Typography uses Space Grotesk.
+
+---
+
+## Test Results
+
+13 tests passing across 3 files using Vitest and React Testing Library.
+
+| File | Tests | Coverage |
+|---|---|---|
+| `PostList.test.tsx` | 7 | Status filter, tag filter, sort by date, search |
+| `PostEditor.test.tsx` | 5 | Create, edit, delete, validation |
+| `Routing.test.tsx` | 1 | Slug-based routing loads correct post |
+
+Tests are integration-style — they use the real store, real library implementations, and assert on rendered output rather than implementation details.
+
+---
+
+## Future Work
+
+- Empty state UI when no posts match a search or filter
+- Slug displayed in the post preview card
+- Mobile-responsive layout
+- Formally write test specifications (Behavior / Setup / Action / Assert / Failure) and verify each test fails when the behavior is broken
